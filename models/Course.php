@@ -3,7 +3,7 @@
 CSCI 466 - Assignment 9 - Semester Spring 2013
 
 Progammer: Group 5
-Date Due:  April 26th, 2013
+Date Due:  May 5th, 2013
 
 Purpose: Gets data from database about courses.
 *********************************************************************/
@@ -133,7 +133,9 @@ class Course extends Model
 		);
 
 		$sth = $this->_db->prepare( $sql );
-		return $sth->execute( $data );
+		$sth->execute( $data );
+
+		return $this->_db->lastInsertId(); 
 	}
 	public function update() {
 		$sql = "UPDATE class

@@ -3,7 +3,7 @@
 CSCI 466 - Assignment 9 - Semester Spring 2013
 
 Progammer: Group 5
-Date Due:  April 26th, 2013
+Date Due:  May 5th, 2013
 
 Purpose: Routes course actions.
 *********************************************************************/
@@ -147,19 +147,12 @@ class CourseController extends Controller
 			if ( $classID ) {
 				$class->setId( $classID );
 				$class->update();
-				header( 'Location: index.php?r=course/view/' . $classID );
 			}
 			// We are making a new class
 			else {
-				$class->store();
-				$this->_setView( 'success' );
-				$this->_view->set( 'title', 'Store success!' );
-				$data = array(
-					'name' => $name
-				);
-				$this->_view->set( 'userData', $data );
+				$classID = $class->store();
 			}
-
+			header( 'Location: index.php?r=course/view/' . $classID );
 		} catch ( Exception $e ) {
 			echo $e->getMessage();
 			die();

@@ -1,6 +1,15 @@
 
 <?php include HOME . DS . 'views' . DS . 'layout' . DS . 'header.php'; ?>
-
+<script>
+function quickTeacher(index)
+{
+if (window.location.href.indexOf("?r=") !== -1) {
+	window.location.href = window.location.href + "/view/" + index;
+} else {
+	window.location.href = window.location.href + "?r=teacher/view/" + index;
+}
+}
+</script>
 <h2><?php echo $title; ?></h2>
 
 <?php if ( $loggedin ): ?>
@@ -14,7 +23,27 @@
 <?php endif; ?>
 
 <?php
-if ( $teachers ):
+if ( $teachers ): ?>
+
+<section class="classes-container" style="width: 200px">
+    	<div>
+        <input id="QUICK" type="checkbox" />
+        <label for="QUICK">Quick Search</label>
+        <article>
+        	<br>
+	<select name="quickTeacher" onchange="quickTeacher(this.value)">
+	<option value=""> </option>
+		  <?php
+	foreach ( $teachers as $teacher ) {
+		echo '<option value="' . $teacher["id"] . '">' . $teacher["name"] . ' </option>';
+	} ?>
+</select>
+		  </article>
+    		</div>
+		</section>
+<br>
+
+<?php 
 	$count = 1;
 foreach ( $teachers as $teacher ): ?>
 	<h3><a href="index.php?r=teacher/view/<?php echo $teacher['id']; ?>"><?php echo $teacher['name']; ?></a>

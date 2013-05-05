@@ -3,7 +3,7 @@
 CSCI 466 - Assignment 9 - Semester Spring 2013
 
 Progammer: Group 5
-Date Due:  April 26th, 2013
+Date Due:  May 5th, 2013
 
 Purpose: Routes enrollment actions.
 *********************************************************************/
@@ -176,7 +176,7 @@ class EnrollmentController extends Controller
 			else {
 				$enrollment->store();
 				$this->_setView( 'success' );
-				$this->_view->set( 'title', 'Store success!' );
+				$this->_view->set( 'title', 'Enrollment success!' );
 				$data = array(
 					'student_id' => $student_id,
 					'class_id' => $class_id,

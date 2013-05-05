@@ -3,7 +3,7 @@
 CSCI 466 - Assignment 9 - Semester Spring 2013
 
 Progammer: Group 5
-Date Due:  April 26th, 2013
+Date Due:  May 5th, 2013
 
 Purpose: Routes teacher actions.
 *********************************************************************/
@@ -116,18 +116,12 @@ class TeacherController extends Controller
 			if ( $teacherID ) {
 				$teacher->setId( $teacherID );
 				$teacher->update();
-				header( 'Location: index.php?r=teacher/view/' . $teacherID );
 			}
 			// We are making a new teacher
 			else {
-				$teacher->store();
-				$this->_setView( 'success' );
-				$this->_view->set( 'title', 'Store success!' );
-				$data = array(
-					'name' => $name
-				);
-				$this->_view->set( 'userData', $data );
+				$teacherID = $teacher->store();
 			}
+			header( 'Location: index.php?r=teacher/view/' . $teacherID );
 
 		} catch ( Exception $e ) {
 			echo $e->getMessage();
