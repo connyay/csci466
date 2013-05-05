@@ -11,7 +11,7 @@ Purpose: Routes to appropriate controller based on provided get
 
 // Set default controller an action. Will be used if nothing is 
 // provided in the query.
-$controller = "teacher";
+$controller = "course";
 $action = "index";
 $query = null;
 
